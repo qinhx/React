@@ -9,14 +9,16 @@ D[应用状态通过纯函数完成] -->A((三大原则))
 
 ### 									核心部分
 
-```mermaid
-graph LR
-A((reducer)) 
-B((action))
-C((store)) 
-A -->B
-B -->C
-C -->A
+```sequence
+
+participant action
+participant store
+participant reducer
+action -> reducer: type  text
+note right of reducer:reducer 处理
+store ->reducer:action
+
+
 ```
 
 ### 									action 详解
@@ -31,7 +33,7 @@ graph LR
 A((action)) --> B[type]
 A -->C[things]
 D{创建方法} -->F(action creator)
-F -->F1(func) 
+F --> F1(func) 
 F -->F2(return)
 F2 -->F21[type]
 F2 -->F22[text]
