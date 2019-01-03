@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import store from '../Store/Store'
 import * as Actions from '../Store/action'
+import CountItem from './CountItem'
 class Counter extends Component{
     constructor(props){
         super(props);
@@ -29,14 +30,8 @@ class Counter extends Component{
         store.unsubscribe(this.onChange)
     }
     render(){
-        const value = this.state.value;
         return(
-            <div>
-               <button onClick={this.onIncrement}>ADD</button>
-               <button onClick={this.onDerement}>REDUCE</button> 
-               <hr/>
-               <span>{value}</span>
-            </div>
+            <CountItem onIncrement={this.onIncrement} onDecrement={this.onDerement} value={this.state.value}></CountItem>
         )
     }
 }
