@@ -73,7 +73,7 @@ state有多个属性，可以拆分多个reducer 来进行解析
 graph LR
 A1(createStore创建store)-->A
 A((Store)) -->B(保存应用状态)
-A -->C(getState获取hangtag)
+A -->C(getState获取tag)
 A -->D(dispatch发送更新意图 )
 A -->F(subscribe注册监听函数)
 A2(createStore参数) -->A21(reducer)

@@ -5,21 +5,30 @@ export default class Btn extends Component{
         this.state = {
             num:0
         }
-        this.handleClick = this.handleClick.bind(this)
+        this.onClickDecrementButton = this.onClickDecrementButton.bind(this)
+        this.onClickIncrementButton = this.onClickIncrementButton.bind(this)
     };
-    handleClick(event){
-        event.stopPropagation()
-        var count = this.state.num;
-        count++;
-        this.setState({
-            num:count
-        })
+    onClickIncrementButton(){
+        this.updateCountDev(true)
     }
+    onClickDecrementButton(){
+        this.updateCountDev(false)
+    }
+    updateCountDev(IsIncrement){
+        const previousData = this.state.num;
+        const newvalue = IsIncrement ? previousData+1 : previousData-1
+        this.setState({
+            num: newvalue
+        })
+        this.props.updateCount(newvalue - previousData)
+    }
+
     render(){
         return (
             <div>
-                <i>Click Times :{this.state.num}</i>
-                <button onClick = {this.handleClick}>Click Me</button>
+                <p>{this.state.num}</p>
+                <button onClick = {this.onClickDecrementButton}>-</button>
+                <button onClick = {this.onClickIncrementButton}>+</button>
             </div>
         )
     }
