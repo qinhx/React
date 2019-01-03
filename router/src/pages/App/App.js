@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Btn from '../ClickBtn/Btn'
 import { BrowserRouter as Router,Route,Link } from 'react-router-dom';
 const About = ()=>(
   <div>
@@ -16,21 +16,16 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+      <div className="App App-header">
           
           <ul>
-          
             <li><Link to="/about">About</Link></li>
             <li><Link to="/home">Home</Link></li>
-            
           </ul>
-          <switch>
             <Route path="/about" component={About}></Route>
             <Route path="/home" component={Home}></Route>
-            </switch>
-        </header>
+        <Btn></Btn>
+        <Btn></Btn>
       </div>
       </Router>
     );
