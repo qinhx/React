@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import * as Actions from './action'
+import { connect } from 'react-redux';
 const CITY_CODES = {
     '北京': 101010100,
     '上海': 101020100,
@@ -25,7 +26,7 @@ class SelectCity extends Component{
         return(
             <select onChange={this.onChange}>
                 {
-                    Object.keys.map(name=>(
+                    Object.keys(CITY_CODES).map(name=>(
                         <option key={name} value={CITY_CODES[name]}>{name}</option>
                     ))
                 }
@@ -35,6 +36,12 @@ class SelectCity extends Component{
 }
 const mapDispatchToProps = (dispatch)=>{
     return{
-        onSelectCity:()
+        onSelectCity:(cityCode)=>{
+            dispatch(Actions.fetchWeather(cityCode))
+        }
     }
 }
+SelectCity.PropTypes={
+    onSelectCity:PropTypes.func.isRequired
+}
+export default connect(null,mapDispatchToProps)(SelectCity)

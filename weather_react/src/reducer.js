@@ -1,6 +1,6 @@
 import * as ActionTypes from './actionTypes'
 import * as Status from './status'
-export default(state=[Status.Loading],action)=>{
+export default(state={status:Status.Loading},action)=>{
     switch (action.type){
         case ActionTypes.FETCH_STARTED:
             return {status:Status.Loading}

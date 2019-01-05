@@ -4,7 +4,7 @@ export const fetchStart = ()=>({
 })
 export const fetchSucces = (result)=>({
     type:FETCH_SUCCESS,
-    result
+    weather:result
 })
 export const fetchFail = (err)=>({
     type:FETCH_FAIL,
@@ -16,6 +16,7 @@ export const fetchWeather = (cityCode)=>{
         dispatch(fetchStart())
         fetch(apiUrl).then(res=>{
             res.json().then(resjson=>{
+                console.log(resjson)
                 dispatch(fetchSucces(resjson))
             })
         }).catch(err=>{
